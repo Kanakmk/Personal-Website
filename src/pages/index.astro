@@ -1,11 +1,50 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<main class="flex justify-center w-full px-6 fade-in">
+		<div class="flex flex-row gap-15 w-1/2 min-w-[320px] py-16 ">
+			<div class="flex flex-col items-center text-[#f1dcbc]">
+				<h1 class="home-heading text-9xl pl-22 pr-8">Hello</h1>
+                <h2 class="author-heading text-4xl">I'm Kanak ~ </h2>
+				<p class="home-text pt-6">
+					software dev
+                    <br/> illustrator
+                    <br/> small business owner
+				</p>
+			</div>
+			<div>
+				<img src="././public/images/personal-photo.jpg" alt="Personal Portrait" class="rounded-3xl w-70 h-75 object-cover"/>
+			</div>
+		</div>
+	</main>
 </Layout>
+
+<style>
+	.home-heading {
+		font-family: "Fleur De Leah", cursive;
+        /* font-family: 'Seratonin', cursive; */
+        /* font-family: 'Pixelscript', cursive; */
+        font-weight: 400;
+        font-style: normal;
+        align-self: flex-start;
+	}
+
+    .author-heading {
+        font-family: "Geist Pixel", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        align-self: flex-end;
+    }
+
+    .home-text {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        align-self: flex-end;
+        text-align: right;
+        font-size: 1.4rem;
+        color: #eeae35
+    }
+</style>
