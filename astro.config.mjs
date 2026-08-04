@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://kanakmk.github.io',
-  base: '/kanakmk-site',
+  base: '/Kanakmk-Personal-Site',
   vite: {
     plugins: [tailwindcss()],
   },
