@@ -4,10 +4,13 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <Layout>
-	<main class="flex justify-center w-full px-6 fade-in">
-		<div class="flex flex-row gap-15 w-1/2 min-w-[320px] py-16 ">
-			<div class="flex flex-col items-center text-[#f1dcbc]">
-				<h1 class="home-heading text-9xl pl-22 pr-8">Hello</h1>
+	<main class="flex flex-col items-center w-full px-6 fade-in-6">
+		<div class="flex flex-row gap-15 min-w-[320px] py-10 main-text">
+			<div class="flex flex-col gap-4 -mr-30">
+                <pre class="text-4xl mt-auto pb-10">⋆ <br/> ✦</pre>
+            </div>
+			<div class="flex flex-col items-center">
+				<h1 class="home-heading text-9xl pr-8">Hello</h1>
                 <h2 class="author-heading text-4xl">I'm Kanak ~ </h2>
 				<p class="home-text pt-6">
 					software dev
@@ -16,17 +19,25 @@ const base = import.meta.env.BASE_URL;
 				</p>
 			</div>
 			<div>
-				<img src={`${base}/images/personal-photo.jpg`} alt="Personal Portrait" class="rounded-3xl w-70 h-75 object-cover"/>
+				<img src={`${base}/images/p1.jpg`} alt="Personal Portrait" class="rounded-3xl w-70 h-75 object-cover"/>
 			</div>
+		</div>
+
+		<div class="flex items-center justify-center">
+            <button>
+                <a href={`${base}/about`}>
+                    <img src={`${base}/images/buncatabout.png`} alt="about button (wip)"/>
+                </a>
+            </button>
 		</div>
 	</main>
 </Layout>
 
+
+
 <style>
 	.home-heading {
 		font-family: "Fleur De Leah", cursive;
-        /* font-family: 'Seratonin', cursive; */
-        /* font-family: 'Pixelscript', cursive; */
         font-weight: 400;
         font-style: normal;
         align-self: flex-start;
