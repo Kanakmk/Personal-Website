@@ -4,14 +4,14 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <Layout>
-	<main class="flex flex-col items-center w-full px-6 fade-in-6">
-		<div class="flex flex-row gap-15 min-w-[320px] py-10 main-text">
+	<main class="flex-1 flex flex-col items-center justify-center w-full main-banner">
+		<div class="flex flex-row gap-15 min-w-[320px] px-6 py-4 md:py-6 lg:py-8 xl:py-10 main-text">
 			<div class="flex flex-col gap-4 -mr-30">
                 <pre class="text-4xl mt-auto pb-10">⋆ <br/> ✦</pre>
             </div>
 			<div class="flex flex-col items-center">
-				<h1 class="home-heading text-9xl pr-8">Hello</h1>
-                <h2 class="author-heading text-4xl">I'm Kanak ~ </h2>
+				<h1 class="home-heading text-9xl pr-8">Hello !</h1>
+                <h2 class="author-heading text-3xl">I'm Kanak ~ </h2>
 				<p class="home-text pt-6">
 					software dev
                     <br/> illustrator
@@ -23,12 +23,12 @@ const base = import.meta.env.BASE_URL;
 			</div>
 		</div>
 
-		<div class="flex items-center justify-center">
-            <button>
-                <a href={`${base}/about`}>
-                    <img src={`${base}/images/buncatabout.png`} alt="about button (wip)"/>
-                </a>
+		<div class="flex flex-col items-center px-6 py-4 md:py-6 lg:py-8 xl:py-10">
+            <button class="about-button">
+                <a href={`${base}/about`}>more about me →</a>
             </button>
+            <br/>
+            <img src={`${base}/images/buncatsleep.png`} alt="bun & cat sleeping"/>
 		</div>
 	</main>
 </Layout>
@@ -44,7 +44,7 @@ const base = import.meta.env.BASE_URL;
 	}
 
     .author-heading {
-        font-family: "Geist Pixel", sans-serif;
+        font-family: "Autour One", system-ui;
         font-weight: 400;
         font-style: normal;
         align-self: flex-end;
@@ -59,4 +59,47 @@ const base = import.meta.env.BASE_URL;
         font-size: 1.4rem;
         color: #eeae35
     }
+
+    .about-button {
+        font-family: "Autour One", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        color:  #eeae35;
+        background-color: #40301f00;
+        padding: 1rem 1.5rem;
+        border: none;
+        border-radius: 0rem 0.75rem;
+        outline: 2px solid #eeae35;
+	    outline-offset: 4px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        transition: color 0.4s ease;
+    }
+
+    .about-button::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: #eeae35;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+        z-index: -1;
+    }
+
+    .about-button:hover::before {
+        transform: scaleX(1);
+    }
+
+    .about-button:hover {
+        color: #40301f;
+    }
+
+    .about-button a {
+        color: inherit;
+        text-decoration: none;
+    }
+
 </style>

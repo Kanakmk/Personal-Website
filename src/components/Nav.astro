@@ -1,18 +1,18 @@
 ---
 const links = [
-	{ href: '/', label: 'h o m e' },
-	{ href: '/about', label: 'a b o u t' },
-	{ href: '/career', label: 'c a r e e r' },
-	{ href: '/shop', label: 's h o p' },
-	{ href: '/contact', label: 'c o n t a c t' },
+	{ href: '/', label: 'H O M E' },
+	{ href: '/about', label: 'A B O U T' },
+	{ href: '/career', label: 'C A R E E R' },
+	{ href: '/shop', label: 'S H O P' },
+	{ href: '/contact', label: 'C O N T A C T' },
 ];
 
 const base = import.meta.env.BASE_URL;
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="nav-bar flex justify-center w-full h-full">
-	<ul class="flex flex-row justify-center gap-12 m-0 p-12 list-none">
+<nav class="nav-bar flex justify-center w-full p-2 md:p-6 xl:p-8">
+	<ul class="flex flex-row justify-center gap-12 m-0 list-none">
 		{
 			links.map((link) => {
 				const href = link.href === '/' ? base : `${base.replace(/\/$/, '')}${link.href}`;
