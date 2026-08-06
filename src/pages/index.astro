@@ -5,19 +5,19 @@ const base = import.meta.env.BASE_URL;
 
 <Layout>
 	<main class="flex-1 flex flex-col items-center justify-center w-full main-banner">
-		<div class="flex flex-row gap-15 min-w-[320px] px-6 py-4 md:py-6 lg:py-8 xl:py-10 main-text left-fade">
-			<div class="flex flex-col gap-4 -mr-30">
+		<div class="flex flex-col md:flex-row items-center gap-6 md:gap-15 px-6 py-4 md:py-6 lg:py-8 xl:py-10 main-text left-fade">
+			<div class="hidden md:flex flex-col gap-4 md:-mr-30">
                 <pre class="text-4xl mt-auto pb-10">⋆ <br/> ✦</pre>
             </div>
 			<div class="flex flex-col items-center">
-				<h1 class="home-heading text-9xl pr-8">Hello !</h1>
-                <h2 class="author-heading text-3xl">I'm Kanak ~ </h2>
+				<h1 class="home-heading text-6xl md:text-9xl pr-8">Hello !</h1>
+                <h2 class="author-heading text-2xl md:text-3xl">I'm Kanak ~ </h2>
 				<p class="home-text pt-6 home-item-1">software dev</p>
 				<p class="home-text pt-6 -mt-7 home-item-2">illustrator</p>
                 <p class="home-text pt-6 -mt-7 home-item-3">small business owner</p>
 			</div>
 			<div>
-				<img src={`${base}/images/p1.jpg`} alt="Personal Portrait" class="rounded-3xl w-70 h-75 object-cover"/>
+				<img src={`${base}/images/p1.jpg`} alt="Personal Portrait" class="rounded-3xl w-56 h-60 md:w-70 md:h-75 object-cover"/>
 			</div>
 		</div>
 
