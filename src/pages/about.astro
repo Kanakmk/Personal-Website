@@ -14,7 +14,7 @@ const base = import.meta.env.BASE_URL;
 			<h2 class="text-2xl main-text pb-2">one thing about me is that...</h2>
 			<h2 class="text-2xl sub-text">I love being</h2>
 			<br/>
-			<h1 id="glitch-heading" class="text-8xl dynamic-font w-150 h-25 bottom-fade">Creative</h1>
+			<h1 id="word-carousel" class="text-8xl dynamic-font w-150 h-25 bottom-fade">Creative</h1>
 			<br/> <br/>
 			<h4 class="main-text text-xl">. ݁˖ .⋆ ݁｡ whether it's in an ide or in a sketchbook ｡⋆. ݁˖ .</h4>
 		</div>
@@ -58,59 +58,52 @@ const base = import.meta.env.BASE_URL;
 </Layout>
 
 <script>
-	const words = [
-		'Creative',  
-		'Unique',
-		'Original',
-		'Artistic', 
-		'Imaginative' 
-	];
-	const fonts = [
-		'"Dancing Script", cursive',
-		'"Homemade Apple", cursive',
-		'"Irish Grover", cursive',
-		'"Londrina Sketch", sans-serif',
-		'"Mr De Haviland", cursive'
+	// create the carousel effect for multiple words in different fonts
+	const items = [
+		{ word: 'Creative', font: '"Dancing Script", cursive' },
+		{ word: 'Unique', font: '"Homemade Apple", cursive' },
+		{ word: 'Original', font: '"Irish Grover", cursive' },
+		{ word: 'Artistic', font: '"Londrina Sketch", sans-serif' },
+		{ word: 'Imaginative', font: '"Mr De Haviland", cursive' },
 	];
 
-	const el = document.getElementById('glitch-heading');
-	let i = 0;
-	let intervalId: number | null | undefined = null;
-	let isRunning = false;
+	const INTERVAL_MS = 1200;
+	const el = document.getElementById('word-carousel');
 
 	if (el) {
+		let i = 0;
+		let intervalId: ReturnType<typeof setInterval> | null = null;
+
 		function tick() {
-			if (el) {
-				el.textContent = words[i % words.length];
-				el.style.fontFamily = fonts[i % fonts.length];
-				i++;
-			}
+			const { word, font } = items[i % items.length];
+			el!.textContent = word;
+			el!.style.fontFamily = font;
+			i++;
 		}
 
-		function startLoop() {
-			intervalId = setInterval(tick, 1200);
-			isRunning = true;
-		}
-
-		function stopLoop() {
-			if (intervalId != null) {
+		function toggleLoop() {
+			if (intervalId) {
 				clearInterval(intervalId);
+				intervalId = null;
+			} else {
+				intervalId = setInterval(tick, INTERVAL_MS);
 			}
-			isRunning = false;
 		}
 
-		el.addEventListener('click', () => {
-			isRunning ? stopLoop() : startLoop();
+		el.addEventListener('click', toggleLoop);
+
+		// load fonts before they appear (prevents glitching)
+		const fontLoadPromises = items.map((item) =>
+			document.fonts.load(`1em ${item.font}`)
+		);
+
+		Promise.all(fontLoadPromises).then(() => {
+			toggleLoop();
 		});
-
-		startLoop();
 	}
-	
-
 </script>
 
 <style>
-
 	.sub-text {
 		font-family: "Autour One", system-ui;
 		font-weight: 400;
@@ -128,8 +121,7 @@ const base = import.meta.env.BASE_URL;
 		transition: color 0.4s ease;
 	}
 
-	#glitch-heading {
+	#word-carousel {
 		cursor: pointer;
 	}
-
 </style>
