@@ -5,12 +5,131 @@ const base = import.meta.env.BASE_URL;
 
 <Layout>
     <main class="flex-1 flex flex-col items-center justify-center w-full px-6 main-banner">
-		<div class="flex items-center justify-center">
+
+		<div class="flex items-center py-6 justify-center top-fade">
             <img src={`${base}/images/buncatsleep.png`} alt="bun & cat sleeping"/>
 		</div>
 
-        <div class="flex flex-row gap-15 min-w-[320px] py-10 main-text">
-			hi
+		<div class="flex flex-col min-w-[320px] text-center top-fade">
+			<h2 class="text-2xl main-text pb-2">one thing about me is that...</h2>
+			<h2 class="text-2xl sub-text">I love being</h2>
+			<br/>
+			<h1 id="glitch-heading" class="text-8xl dynamic-font w-150 h-25 bottom-fade">Creative</h1>
+			<br/> <br/>
+			<h4 class="main-text text-xl">. ݁˖ .⋆ ݁｡ whether it's in an ide or in a sketchbook ｡⋆. ݁˖ .</h4>
 		</div>
+
+		<div class="flex flex-col items-center gap-6 py-10 justify-center">
+			<div class="flex flex-row gap-6 p-4 left-fade-delay">
+				<p class="main-text text-right">
+					<b>As a creative in the field of both <br/>
+					tech and art, I've always been curious <br/>
+					of both worlds! 
+					<br/> <br/>
+					With 3 years of experience in full-stack <br/>
+					software development and lifelong <br/>
+					experience of being an artist, I've always <br/>
+					sought to incorporate both into my lifestyle...</b> <br/>
+				</p>
+				<!-- <img src={`${base}/images/buncatsleep.png`} alt="bun & cat sleeping"/> -->
+			</div>
+
+			<div class="flex flex-row gap-6 p-4 right-fade-delay">
+				<!-- <img src={`${base}/images/buncatsleep.png`} alt="bun & cat sleeping"/> -->
+				<p class="main-text">
+					<b>So, I built a brand around the kind of <br/>
+					aesthetics I've always been naturally <br/>
+					drawn to <br/>
+					<br/> <br/>
+					then a community - to share that vision <br/>
+					with others all around the world <br/>
+					<br/> <br/>
+					and most recently, this website (plus a <br/>
+					couple others) to showcase my journey! <br/>
+					</b><br/>
+				</p>
+			</div>
+			<button class="nav-button">
+                <a href={`${base}/career`}>here's what I've built! →</a>
+            </button>
+		</div>
+
 	</main>
 </Layout>
+
+<script>
+	const words = [
+		'Creative',  
+		'Unique',
+		'Original',
+		'Artistic', 
+		'Imaginative' 
+	];
+	const fonts = [
+		'"Dancing Script", cursive',
+		'"Homemade Apple", cursive',
+		'"Irish Grover", cursive',
+		'"Londrina Sketch", sans-serif',
+		'"Mr De Haviland", cursive'
+	];
+
+	const el = document.getElementById('glitch-heading');
+	let i = 0;
+	let intervalId: number | null | undefined = null;
+	let isRunning = false;
+
+	if (el) {
+		function tick() {
+			if (el) {
+				el.textContent = words[i % words.length];
+				el.style.fontFamily = fonts[i % fonts.length];
+				i++;
+			}
+		}
+
+		function startLoop() {
+			intervalId = setInterval(tick, 1200);
+			isRunning = true;
+		}
+
+		function stopLoop() {
+			if (intervalId != null) {
+				clearInterval(intervalId);
+			}
+			isRunning = false;
+		}
+
+		el.addEventListener('click', () => {
+			isRunning ? stopLoop() : startLoop();
+		});
+
+		startLoop();
+	}
+	
+
+</script>
+
+<style>
+
+	.sub-text {
+		font-family: "Autour One", system-ui;
+		font-weight: 400;
+		font-style: normal;
+		color: #eeae35
+	}
+
+	.dynamic-font {
+		font-family: "Dancing Script", cursive;
+		color: #eeae35
+	}
+
+	.dynamic-font:hover {
+		color: #ccd347;
+		transition: color 0.4s ease;
+	}
+
+	#glitch-heading {
+		cursor: pointer;
+	}
+
+</style>
